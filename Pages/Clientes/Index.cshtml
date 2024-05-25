@@ -1,0 +1,43 @@
+@page
+@model AGENDA.Pages.Clientes.Index
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-center mb-3"> Lista de clientes</h2>
+
+<a class="btn btn-primary mb-3" href="/Clientes/Crear">Nuevo Cliente</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdContacto</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Compañia</th>
+            <th>Fecha_Reg</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var clientes in Model.ListaClientes) {
+            <tr>
+                <td>@clientes.IdContacto</td>
+                <td>@(clientes.Nombres + " " + clientes.Apellidos)</td>
+                <td>@clientes.Corre</td>
+                <td>@clientes.Telefono</td>
+                <td>@clientes.Compania</td>
+                <td>@clientes.Fecha_Reg</td>
+                <td style="white-space: nowrap;">
+                    <a class= "btn btn-primary btn-sm" href="/Clientes/Editar?IdContacto=@clientes.IdContacto">Editar</a>
+                    <a class= "btn btn-danger btn-sm" href="/Clientes/Eliminar?IdContacto=@clientes.IdContacto" >Eliminar</a>      
+                </td>
+            </tr>
+        
+    }
+    </tbody>
+
+
+</table>
