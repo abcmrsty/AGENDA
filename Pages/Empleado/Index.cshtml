@@ -1,0 +1,60 @@
+@page
+@model AGENDA.Pages.Empleado.Index
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-center mb-3"> Lista de Empleados</h2>
+
+<a class="btn btn-primary mb-3" href="/Empleado/Crear">Nuevo Empleado</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cedula</th>
+            <th>Nombre Completo</th>
+            <th>FechaNacimiento</th>
+            <th>Departamento</th>
+            <th>Municipio</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Correo</th>
+            <th>FechaIngreso</th>
+            <th>Profesión</th>
+            <th>Puesto</th>
+            <th>Salario</th>
+            <th>Acciones
+                
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var empleado in Model.ListarEmpleado)
+        {
+            <tr>
+                <td>@empleado.Id</td>
+                <td>@empleado.Cedula</td>
+                <td>@(empleado.Nombres + " " + @empleado.Apellidos)</td>
+                <td>@empleado.Fecha_de_Nacimiento.ToString("yyyy-MM-dd")</td>
+                <td>@empleado.Departamento</td>
+                <td>@empleado.Municipio</td>
+                <td>@empleado.Dirección</td>
+                <td>@empleado.Teléfono</td>
+                <td>@empleado.Celular</td>
+                <td>@empleado.Correo</td>
+                <td>@empleado.Fecha_de_Ingreso.ToString("yyyy-MM-dd")</td>
+                <td>@empleado.Profesión</td>
+                <td>@empleado.Puesto</td>
+                <td>@empleado.Salario</td>
+                <td style="white-space: nowrap;">
+                    <a class="btn btn-primary btn-sm" href="/Empleado/Editar?Id=@empleado.Id">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="/Empleado/Eliminar?Id=@empleado.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
